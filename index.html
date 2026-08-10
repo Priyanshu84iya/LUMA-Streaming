@@ -2,15 +2,117 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- Primary Meta -->
     <title>LUMA — Premium Streaming</title>
-    <meta property="og:image" content="https://bolt.new/static/og_default.png" />
+    <meta name="description" content="Watch movies, series, and anime from multiple sources. Free streaming on LUMA with favorites, history, and watch later." />
+    <meta name="keywords" content="streaming, movies, series, anime, watch online, free, LUMA" />
+    <meta name="author" content="Priyanshu Chaurasiya" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- PWA / Theme -->
+    <meta name="theme-color" content="#0a0a0f" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="LUMA" />
+    <meta name="application-name" content="LUMA" />
+    <meta name="msapplication-TileColor" content="#0a0a0f" />
+    <meta name="msapplication-TileImage" content="/icons/icon-512.png" />
+    <meta name="msapplication-navbutton-color" content="#e50914" />
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Favicon / Icons -->
+    <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-512.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192.png" />
+
+    <!-- Apple Splash Screens (portrait) -->
+    <link rel="apple-touch-startup-image" href="/icons/splash.png"
+          media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" />
+    <link rel="apple-touch-startup-image" href="/icons/splash.png"
+          media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)" />
+    <link rel="apple-touch-startup-image" href="/icons/splash.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="LUMA — Premium Streaming" />
+    <meta property="og:description" content="Watch movies, series, and anime from multiple sources. Free streaming with offline support." />
+    <meta property="og:image" content="/icons/splash.png" />
+    <meta property="og:site_name" content="LUMA" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://bolt.new/static/og_default.png" />
+    <meta name="twitter:title" content="LUMA — Premium Streaming" />
+    <meta name="twitter:description" content="Watch movies, series, and anime from multiple sources." />
+    <meta name="twitter:image" content="/icons/splash.png" />
+
+    <!-- Preconnect to critical origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://image.tmdb.org" />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
   </head>
   <body>
-    <div id="root"></div>
+    <!-- App loading splash (replaced by React once hydrated) -->
+    <div id="root">
+      <div id="pwa-splash" style="
+        position: fixed;
+        inset: 0;
+        background: #0a0a0f;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        animation: splashFadeIn 0.4s ease;
+      ">
+        <style>
+          @keyframes splashFadeIn { from { opacity: 0; } to { opacity: 1; } }
+          @keyframes splashSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+          @keyframes splashPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(229,9,20,0.3); }
+            50% { box-shadow: 0 0 50px rgba(229,9,20,0.6); }
+          }
+        </style>
+        <div style="
+          width: 80px;
+          height: 80px;
+          border-radius: 22px;
+          background: #14141c;
+          border: 2px solid #2a2a38;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 20px;
+          animation: splashPulse 2s infinite ease-in-out;
+          position: relative;
+        ">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#e50914" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </div>
+        <div style="color: #f5f5f7; font-size: 22px; font-weight: 900; letter-spacing: -0.04em; margin-bottom: 6px;">LUMA</div>
+        <div style="color: #9a9aa8; font-size: 12px; font-weight: 500; margin-bottom: 24px;">Premium Streaming</div>
+        <div style="
+          width: 32px;
+          height: 32px;
+          border: 3px solid #2a2a38;
+          border-top-color: #e50914;
+          border-radius: 50%;
+          animation: splashSpin 0.8s linear infinite;
+        "></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

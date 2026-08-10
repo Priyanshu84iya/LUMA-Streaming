@@ -14,7 +14,11 @@ import { AboutPage } from "@/pages/AboutPage";
 import { CopyrightPage } from "@/pages/CopyrightPage";
 import { StoreProvider, useStore } from "@/store/AppStore";
 import { RouterProvider, useRouter } from "@/store/Router";
-import { Analytics } from "@vercel/analytics/next"
+import { PWAProvider } from "@/hooks/usePWA";
+import { PWAInstallBanner } from "@/components/PWAInstallBanner";
+import { PWAUpdateBanner } from "@/components/PWAUpdateBanner";
+import { OfflineBanner } from "@/components/OfflineBanner";
+import { Analytics } from "@vercel/analytics/react";
 
 function PageRouter() {
   const { route } = useRouter();
@@ -66,22 +70,32 @@ function Layout() {
 
   return (
     <div className="min-h-screen bg-bg text-text">
+      {/* PWA system banners */}
+      <PWAUpdateBanner />
+      <OfflineBanner />
+
       {!isWatchPage && <Sidebar />}
       <div className={`md:ml-64 ${!isWatchPage ? "pt-14 md:pt-0" : ""}`}>
         <PageRouter />
       </div>
       {!isWatchPage && <MobileBottomBar />}
+
+      {/* PWA install prompt (floats above bottom nav) */}
+      <PWAInstallBanner />
     </div>
   );
 }
 
 function App() {
   return (
-    <RouterProvider>
-      <StoreProvider>
-        <Layout />
-      </StoreProvider>
-    </RouterProvider>
+    <PWAProvider>
+      <RouterProvider>
+        <StoreProvider>
+          <Layout />
+          <Analytics />
+        </StoreProvider>
+      </RouterProvider>
+    </PWAProvider>
   );
 }
 
