@@ -1,17 +1,6 @@
+import { lazy, Suspense } from "react";
 import { MobileBottomBar, Sidebar } from "@/components/Navigation";
 import { HomePage } from "@/pages/HomePage";
-import { SearchPage } from "@/pages/SearchPage";
-import { BrowsePage } from "@/pages/BrowsePage";
-import { DetailsPage } from "@/pages/DetailsPage";
-import { WatchPage } from "@/pages/WatchPage";
-import { FavoritesPage } from "@/pages/FavoritesPage";
-import { HistoryPage } from "@/pages/HistoryPage";
-import { WatchLaterPage } from "@/pages/WatchLaterPage";
-import { ProfilePage } from "@/pages/ProfilePage";
-import { SettingsPage } from "@/pages/SettingsPage";
-import { ExtensionsPage } from "@/pages/ExtensionsPage";
-import { AboutPage } from "@/pages/AboutPage";
-import { CopyrightPage } from "@/pages/CopyrightPage";
 import { StoreProvider, useStore } from "@/store/AppStore";
 import { RouterProvider, useRouter } from "@/store/Router";
 import { PWAProvider } from "@/hooks/usePWA";
@@ -19,6 +8,28 @@ import { PWAInstallBanner } from "@/components/PWAInstallBanner";
 import { PWAUpdateBanner } from "@/components/PWAUpdateBanner";
 import { OfflineBanner } from "@/components/OfflineBanner";
 import { Analytics } from "@vercel/analytics/react";
+
+// Lazy-load pages for code-splitting
+const SearchPage = lazy(() => import("@/pages/SearchPage").then(m => ({ default: m.SearchPage })));
+const BrowsePage = lazy(() => import("@/pages/BrowsePage").then(m => ({ default: m.BrowsePage })));
+const DetailsPage = lazy(() => import("@/pages/DetailsPage").then(m => ({ default: m.DetailsPage })));
+const WatchPage = lazy(() => import("@/pages/WatchPage").then(m => ({ default: m.WatchPage })));
+const FavoritesPage = lazy(() => import("@/pages/FavoritesPage").then(m => ({ default: m.FavoritesPage })));
+const HistoryPage = lazy(() => import("@/pages/HistoryPage").then(m => ({ default: m.HistoryPage })));
+const WatchLaterPage = lazy(() => import("@/pages/WatchLaterPage").then(m => ({ default: m.WatchLaterPage })));
+const ProfilePage = lazy(() => import("@/pages/ProfilePage").then(m => ({ default: m.ProfilePage })));
+const SettingsPage = lazy(() => import("@/pages/SettingsPage").then(m => ({ default: m.SettingsPage })));
+const ExtensionsPage = lazy(() => import("@/pages/ExtensionsPage").then(m => ({ default: m.ExtensionsPage })));
+const AboutPage = lazy(() => import("@/pages/AboutPage").then(m => ({ default: m.AboutPage })));
+const CopyrightPage = lazy(() => import("@/pages/CopyrightPage").then(m => ({ default: m.CopyrightPage })));
+
+function PageSpinner() {
+  return (
+    <div className="flex items-center justify-center min-h-[60vh]">
+      <div className="w-10 h-10 border-4 border-border border-t-primary rounded-full animate-spin" />
+    </div>
+  );
+}
 
 function PageRouter() {
   const { route } = useRouter();
@@ -32,36 +43,42 @@ function PageRouter() {
     );
   }
 
-  switch (route.path) {
-    case "home":
-      return <HomePage />;
-    case "search":
-      return <SearchPage />;
-    case "browse":
-      return <BrowsePage />;
-    case "details":
-      return <DetailsPage />;
-    case "watch":
-      return <WatchPage />;
-    case "favorites":
-      return <FavoritesPage />;
-    case "history":
-      return <HistoryPage />;
-    case "watchlater":
-      return <WatchLaterPage />;
-    case "profile":
-      return <ProfilePage />;
-    case "settings":
-      return <SettingsPage />;
-    case "extensions":
-      return <ExtensionsPage />;
-    case "about":
-      return <AboutPage />;
-    case "copyright":
-      return <CopyrightPage />;
-    default:
-      return <HomePage />;
-  }
+  return (
+    <Suspense fallback={<PageSpinner />}>
+      {(() => {
+        switch (route.path) {
+          case "home":
+            return <HomePage />;
+          case "search":
+            return <SearchPage />;
+          case "browse":
+            return <BrowsePage />;
+          case "details":
+            return <DetailsPage />;
+          case "watch":
+            return <WatchPage />;
+          case "favorites":
+            return <FavoritesPage />;
+          case "history":
+            return <HistoryPage />;
+          case "watchlater":
+            return <WatchLaterPage />;
+          case "profile":
+            return <ProfilePage />;
+          case "settings":
+            return <SettingsPage />;
+          case "extensions":
+            return <ExtensionsPage />;
+          case "about":
+            return <AboutPage />;
+          case "copyright":
+            return <CopyrightPage />;
+          default:
+            return <HomePage />;
+        }
+      })()}
+    </Suspense>
+  );
 }
 
 function Layout() {
