@@ -14,6 +14,7 @@ import { AboutPage } from "@/pages/AboutPage";
 import { CopyrightPage } from "@/pages/CopyrightPage";
 import { StoreProvider, useStore } from "@/store/AppStore";
 import { RouterProvider, useRouter } from "@/store/Router";
+import { Analytics } from "@vercel/analytics/next"
 
 function PageRouter() {
   const { route } = useRouter();
