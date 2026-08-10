@@ -14,11 +14,15 @@ import { AboutPage } from "@/pages/AboutPage";
 import { CopyrightPage } from "@/pages/CopyrightPage";
 import { StoreProvider, useStore } from "@/store/AppStore";
 import { RouterProvider, useRouter } from "@/store/Router";
+<<<<<<< HEAD
 import { PWAProvider } from "@/hooks/usePWA";
 import { PWAInstallBanner } from "@/components/PWAInstallBanner";
 import { PWAUpdateBanner } from "@/components/PWAUpdateBanner";
 import { OfflineBanner } from "@/components/OfflineBanner";
 import { Analytics } from "@vercel/analytics/react";
+=======
+import { Analytics } from "@vercel/analytics/react"
+>>>>>>> 1a6cb457c147235dae90d9ef32efd93d318b8bf8
 
 function PageRouter() {
   const { route } = useRouter();
@@ -88,6 +92,7 @@ function Layout() {
 
 function App() {
   return (
+<<<<<<< HEAD
     <PWAProvider>
       <RouterProvider>
         <StoreProvider>
@@ -96,6 +101,14 @@ function App() {
         </StoreProvider>
       </RouterProvider>
     </PWAProvider>
+=======
+    <RouterProvider>
+      <StoreProvider>
+        <Layout />
+        <Analytics />
+      </StoreProvider>
+    </RouterProvider>
+>>>>>>> 1a6cb457c147235dae90d9ef32efd93d318b8bf8
   );
 }
 
