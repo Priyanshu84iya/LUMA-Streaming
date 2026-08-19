@@ -8,6 +8,7 @@ import { PWAInstallBanner } from "@/components/PWAInstallBanner";
 import { PWAUpdateBanner } from "@/components/PWAUpdateBanner";
 import { OfflineBanner } from "@/components/OfflineBanner";
 import { Analytics } from "@vercel/analytics/react";
+import { AshnaWidget } from "@/components/AshnaWidget";
 
 // Lazy-load pages for code-splitting
 const SearchPage = lazy(() => import("@/pages/SearchPage").then(m => ({ default: m.SearchPage })));
@@ -99,6 +100,7 @@ function Layout() {
 
       {/* PWA install prompt (floats above bottom nav) */}
       <PWAInstallBanner />
+      <AshnaWidget />
     </div>
   );
 }
