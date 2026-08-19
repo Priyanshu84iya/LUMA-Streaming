@@ -33,10 +33,16 @@
     <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192.png" />
 
     <!-- Apple Splash Screens (portrait) -->
-    <link rel="apple-touch-startup-image" href="/icons/splash.png"
-          media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" />
-    <link rel="apple-touch-startup-image" href="/icons/splash.png"
-          media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)" />
+    <link
+      rel="apple-touch-startup-image"
+      href="/icons/splash.png"
+      media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="/icons/splash.png"
+      media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)"
+    />
     <link rel="apple-touch-startup-image" href="/icons/splash.png" />
 
     <!-- Open Graph -->
@@ -61,18 +67,21 @@
   <body>
     <!-- App loading splash (replaced by React once hydrated) -->
     <div id="root">
-      <div id="pwa-splash" style="
-        position: fixed;
-        inset: 0;
-        background: #0a0a0f;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        animation: splashFadeIn 0.4s ease;
-      ">
+      <div
+        id="pwa-splash"
+        style="
+          position: fixed;
+          inset: 0;
+          background: #0a0a0f;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          animation: splashFadeIn 0.4s ease;
+        "
+      >
         <style>
           @keyframes splashFadeIn { from { opacity: 0; } to { opacity: 1; } }
           @keyframes splashSpin {
@@ -80,39 +89,61 @@
             100% { transform: rotate(360deg); }
           }
           @keyframes splashPulse {
-            0%, 100% { box-shadow: 0 0 20px rgba(229,9,20,0.3); }
-            50% { box-shadow: 0 0 50px rgba(229,9,20,0.6); }
+            0%, 100% { box-shadow: 0 0 20px rgba(229, 9, 20, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(229, 9, 20, 0.6); }
           }
         </style>
-        <div style="
-          width: 80px;
-          height: 80px;
-          border-radius: 22px;
-          background: #14141c;
-          border: 2px solid #2a2a38;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 20px;
-          animation: splashPulse 2s infinite ease-in-out;
-          position: relative;
-        ">
-          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#e50914" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <div
+          style="
+            width: 80px;
+            height: 80px;
+            border-radius: 22px;
+            background: #14141c;
+            border: 2px solid #2a2a38;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            animation: splashPulse 2s infinite ease-in-out;
+            position: relative;
+          "
+        >
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#e50914" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
           </svg>
         </div>
         <div style="color: #f5f5f7; font-size: 22px; font-weight: 900; letter-spacing: -0.04em; margin-bottom: 6px;">LUMA</div>
         <div style="color: #9a9aa8; font-size: 12px; font-weight: 500; margin-bottom: 24px;">Premium Streaming</div>
-        <div style="
-          width: 32px;
-          height: 32px;
-          border: 3px solid #2a2a38;
-          border-top-color: #e50914;
-          border-radius: 50%;
-          animation: splashSpin 0.8s linear infinite;
-        "></div>
+        <div
+          style="
+            width: 32px;
+            height: 32px;
+            border: 3px solid #2a2a38;
+            border-top-color: #e50914;
+            border-radius: 50%;
+            animation: splashSpin 0.8s linear infinite;
+          "
+          role="status"
+          aria-label="Loading"
+        ></div>
       </div>
     </div>
+
     <script type="module" src="/src/main.tsx"></script>
+<<<<<<< HEAD
+    <script
+      src="https://app.ashna.ai/embed/agent-widget.js"
+      data-agent-id="6a7f5e233bac6a8a9a47b697"
+      data-token="eyJhbGciOiJIUzI1NiJ9.eyJhZ2VudElkIjoiNmE3ZjVlMjMzYmFjNmE4YTlhNDdiNjk3IiwidXNlcklkIjoiNmE3NmU1MzE4NDc2ZmNhM2FhZDUxOGUwIiwiYWxsb3dlZE9yaWdpbnMiOlsibHVtYS1zdHJlYW1pbmcudmVyY2VsLmFwcCJdLCJvcmlnaW5Eb21haW4iOiJsdW1hLXN0cmVhbWluZy52ZXJjZWwuYXBwIiwiYXNzaWduZWRPcmdJZCI6IiIsImlhdCI6MTc4NjczMjMxNSwiaXNzIjoiYXNobmFBSSIsImF1ZCI6ImFzaG5hQUkiLCJzdWIiOiI2YTdmNWUyMzNiYWM2YThhOWE0N2I2OTcifQ.ZS0eaHhbpw1eKQv2DLusdd2f_WqA908blwI4ExOOqUM"
+      data-theme="dark"
+      data-icon-color="#dc2626"
+      data-icon-shape="circle"
+      data-icon-style="message-circle"
+      async
+    ></script>
+=======
+    <script src="https://app.ashna.ai/embed/agent-widget.js" data-agent-id="6a7f5e233bac6a8a9a47b697" data-token="eyJhbGciOiJIUzI1NiJ9.eyJhZ2VudElkIjoiNmE3ZjVlMjMzYmFjNmE4YTlhNDdiNjk3IiwidXNlcklkIjoiNmE3NmU1MzE4NDc2ZmNhM2FhZDUxOGUwIiwiYWxsb3dlZE9yaWdpbnMiOlsibHVtYS1zdHJlYW1pbmcudmVyY2VsLmFwcCJdLCJvcmlnaW5Eb21haW4iOiJsdW1hLXN0cmVhbWluZy52ZXJjZWwuYXBwIiwiYXNzaWduZWRPcmdJZCI6IiIsImlhdCI6MTc4NjczMjMxNSwiaXNzIjoiYXNobmFBSSIsImF1ZCI6ImFzaG5hQUkiLCJzdWIiOiI2YTdmNWUyMzNiYWM2YThhOWE0N2I2OTcifQ.ZS0eaHhbpw1eKQv2DLusdd2f_WqA908blwI4ExOOqUM" data-theme="dark" data-icon-color="#dc2626" data-icon-shape="circle" data-icon-style="message-circle" async></script>
+>>>>>>> fecf32222328d4e85c61e6d2bcfd189df5246b63
   </body>
 </html>
+
