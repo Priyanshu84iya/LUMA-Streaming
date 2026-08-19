@@ -22,7 +22,7 @@ export function AshnaWidget() {
     script.setAttribute("data-theme", "dark");
     script.setAttribute("data-icon-color", "#dc2626");
     script.setAttribute("data-icon-shape", "circle");
-    script.setAttribute("data-icon-style", "message-circle");
+    script.setAttribute("data-icon-style", "headset");
 
     document.body.appendChild(script);
 
